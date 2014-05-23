@@ -1,5 +1,6 @@
 public abstract class Actor {
   int x,y;
+  Node n;
   
   public abstract void draw();
   
