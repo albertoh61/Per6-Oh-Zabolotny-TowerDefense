@@ -1,13 +1,17 @@
 public class Grid {
   color[][] gridc;
+  Actor[][] grid;
+  //LinkedList path;
   
   public Grid(int x, int y) {
-    gridc = new gridc[x / 50][y / 50];
+    gridc = new color[x / 50][y / 50];
     for (int i = 0;i < gridc.length;i++) {
       for (int j = 0;j < gridc[0].length;j++) {
-        gridc[i][j] = new color(random(255),random(255),random(255));
+        gridc[i][j] = color(random(255),random(255),0);
       }
     }
+    grid = new Actor[x / 50][y / 50];
+    //path = new LinkedList();
   }
 
   public void setGrid() {

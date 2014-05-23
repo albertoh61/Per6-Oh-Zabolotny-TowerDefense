@@ -1,13 +1,8 @@
-public class TowerDefense {
-  Grid g;  
-  
- public TowerDefense() {
- }
+ Grid g;  
  
- public setup() {
+ public void setup() {
    size(1350,800);
    g = new Grid(1350,800);
    g.setGrid();   
  }
-  
-}
+ 
