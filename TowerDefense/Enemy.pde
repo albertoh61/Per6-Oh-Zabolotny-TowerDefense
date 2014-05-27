@@ -17,7 +17,7 @@ public class Enemy extends Actor {
   }
   
   public void action() {
-    if (n.getNext() == null)
+    //if (n.getNext() == null)
    
     
   }

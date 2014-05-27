@@ -1,7 +1,7 @@
 public class Grid {
   color[][] gridc;
   Actor[][] grid;
-  //LinkedList path;
+  MyLinkedList path;
   
   public Grid(int x, int y) {
     gridc = new color[x / 50][y / 50];
@@ -11,7 +11,7 @@ public class Grid {
       }
     }
     grid = new Actor[x / 50][y / 50];
-    //path = new LinkedList();
+    path = new MyLinkedList();
   }
 
   public void setGrid() {
@@ -21,6 +21,10 @@ public class Grid {
         rect(i * 50,j * 50,50,50);
       }
     }
+  }
+
+  public MyLinkedList getPath() {
+    return path;
   }  
   
 }

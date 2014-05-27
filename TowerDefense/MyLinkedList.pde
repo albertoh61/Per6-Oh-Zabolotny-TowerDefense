@@ -1,34 +1,35 @@
  public class MyLinkedList<T> {
-        public class Node<T> {
-        private T name;
-        private Node<T> next;
-      
-      public Node (T n) {
-          this.name = n;
-          next = null;
-      }
-      
-      public Node<T> getNext () {
-          return next;
-      }
-      
-      public T getData () {
-          return name;
-      }
-      
-      public void setData (T n) {
-          this.name = n;
-      }
-      
-      public void setNext (Node<T> next) {
-          this.next = next;
-      }
-      
-      public String toString () {
-          return name.toString();
-      }
-      
-        }
+     public class Node<T> {
+            private T name;
+            private Node<T> next;
+            private int x,y;
+          
+          public Node (T n) {
+              this.name = n;
+              next = null;
+          }
+          
+          public Node<T> getNext () {
+              return next;
+          }
+          
+          public T getData () {
+              return name;
+          }
+          
+          public void setData (T n) {
+              this.name = n;
+          }
+          
+          public void setNext (Node<T> next) {
+              this.next = next;
+          }
+          
+          public String toString () {
+              return name.toString();
+          }
+          
+            }
         private Node<T> head;
         private int length;
     
