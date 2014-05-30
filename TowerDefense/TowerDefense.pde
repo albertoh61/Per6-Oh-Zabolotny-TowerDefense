@@ -1,21 +1,24 @@
-Grid g;  
+Grid g;
+MyLinkedList L;
  
-public void setup() {
-   size(1350,800);
-   g = new Grid(1350,800);
-   g.setGrid();
-   MyLinkedList L = g.getPath();
-   for (int i = 0;i < 27;i++) {
-      L.add(new Node(i,8));
-   }  
+public void setup() { 
+  size(1350,800);
+  //Creates grid of colors
+  g = new Grid(1350,800);
+  //Creates path that correlates to LinkedList
+  L = g.getPath();
+  for (int i = 0;i < 27;i++) {
+     L.add(i,8,0);
+  }
+  Node n = L.getNode(0);
+  while (n != null) {
+    g.set(n.getX(), n.getY(), color(240,230,140));
+    n = n.getNext();
+  }
+  g.setGrid();  
 }
  
 public void draw() {
-  Node n = L.getNode(0);
-  while (n.hasNext()) {
-    // Alter grid for path 
-  }
-  g.setGrid();
     
    
 }
