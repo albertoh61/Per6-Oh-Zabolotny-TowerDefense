@@ -1,5 +1,5 @@
    public class Node<Actor> {
-            private String name;
+            private Actor name;
             private Node<Actor> next;
             private int x,y;
          
@@ -17,7 +17,7 @@
               return next;
           }
          
-          public String getData () {
+          public Actor getData () {
               return name;
           }
          
@@ -29,7 +29,7 @@
            return y;
           }
          
-          public void setData (String n) {
+          public void setData (Actor n) {
               this.name = n;
           }
          

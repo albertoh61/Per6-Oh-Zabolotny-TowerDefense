@@ -31,11 +31,11 @@
       length++;
         }
    
-        public void set (int position,String newString) {
+        public void set (int position,Actor a) {
       if (position > length || position < 0) {
           throw new IndexOutOfBoundsException();
       }
-            getNode(position).setData(newString);
+            getNode(position).setData(a);
         }
        
         public void remove (int position) {
@@ -58,7 +58,7 @@
       return length;
         }
    
-        public String get(int position) {
+        public Actor get(int position) {
       if (position > length) {
           throw new IndexOutOfBoundsException();
       }

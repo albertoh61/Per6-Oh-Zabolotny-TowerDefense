@@ -7,7 +7,7 @@ public class Grid {
     gridc = new color[x / 50][y / 50];
     for (int i = 0;i < gridc.length;i++) {
       for (int j = 0;j < gridc[0].length;j++) {
-        gridc[i][j] = color(random(255),random(255),0);
+        gridc[i][j] = color(random(155) + 100,random(155) + 100,0);
       }
     }
     grid = new Actor[x / 50][y / 50];
@@ -21,6 +21,10 @@ public class Grid {
         rect(i * 50,j * 50,50,50);
       }
     }
+  }
+
+  public void set(int x, int y, color c) {
+    gridc[x][y] = c;  
   }
 
   public MyLinkedList getPath() {

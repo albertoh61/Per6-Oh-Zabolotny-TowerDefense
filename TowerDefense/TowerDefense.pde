@@ -19,7 +19,12 @@ public void setup() {
 }
  
 public void draw() {
-    
-   
+  g.setGrid();
+  Node n = L.getNode(0);
+  while (n != null) {
+    if (n.getData() != null)
+      //n.getData().draw();
+    n = n.getNext();
+  }
 }
  
