@@ -1,5 +1,6 @@
 Grid g;
 MyLinkedList L;
+ArrayList<Enemy> eA;
  
 public void setup() { 
   size(1350,800);
@@ -15,16 +16,31 @@ public void setup() {
     g.set(n.getX(), n.getY(), color(240,230,140));
     n = n.getNext();
   }
-  g.setGrid();  
+  eA = new ArrayList<Enemy>();
+  g.setGrid();
+  addEnemy(new Dot(L.getNode(0)));
 }
  
 public void draw() {
   g.setGrid();
-  Node n = L.getNode(0);
-  while (n != null) {
-    if (n.getData() != null)
-      //n.getData().draw();
-    n = n.getNext();
+  // Deals with drawing each enemy
+  for (int i = 0;i < eA.size();i++) {
+    if (eA.get(i).getNode() == null) // This removes "dead" enemies, or enemies without a node
+      eA.remove(i);
+    else {
+      eA.get(i).draw();
+      eA.get(i).move();
+    }
   }
+  // Timing delay
+  try {
+    Thread.sleep(100);
+  } catch(InterruptedException ex) {
+    Thread.currentThread().interrupt();
+  }
+}
+
+public void addEnemy(Enemy e) {
+  eA.add(e);
 }
  

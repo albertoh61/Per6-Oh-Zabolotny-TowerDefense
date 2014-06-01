@@ -66,10 +66,10 @@
         }
    
         public String toString() {
-      String s = "[" + head.getNext().getData();
+      String s = "[" + head.getNext().getX() + head.getNext().getY();
       Node<Actor> pos = head.getNext().getNext();
       for (int i = 0;i < this.length() - 1;i++) {
-          s = s + "," + pos.getData();
+          s = s + "," + pos.getX() + pos.getY();
           pos = pos.getNext();
       }
       s = s + "]";
