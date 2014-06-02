@@ -1,5 +1,5 @@
 public class Enemy extends Actor {
-  int x,y;
+  int x,y,health;
   Node<Actor> n;
   
   public Enemy() {
@@ -24,6 +24,10 @@ public class Enemy extends Actor {
       x = n.getX();
       y = n.getY();
     }
+  }
+  
+  public void loseHealth(int x) {
+    health = health - x;  
   }
   
   public void action() { // For enemies, action kills them and will, in the future, cause you to lose a life
