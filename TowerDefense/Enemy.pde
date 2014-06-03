@@ -15,8 +15,8 @@ public class Enemy extends Actor {
   public void draw() {}
   
   public void move() {
-    if (n.getNext() == null)
-      action();
+    if (n.getNext() == null || health <= 0)
+      die();
     else {
       n.setData(null);
       n.getNext().setData(this);
@@ -30,7 +30,7 @@ public class Enemy extends Actor {
     health = health - x;  
   }
   
-  public void action() { // For enemies, action kills them and will, in the future, cause you to lose a life
+  public void die() { // For enemies, die kills them and will, in the future, cause you to lose a life
   }
   
   public Node<Actor> getNode() {

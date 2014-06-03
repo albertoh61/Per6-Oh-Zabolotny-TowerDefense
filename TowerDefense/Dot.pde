@@ -1,6 +1,7 @@
 public class Dot extends Enemy {
   public Dot(Node<Actor> root) {
     super(root); 
+    health = 5;
   }
   
   public void draw() {
@@ -12,7 +13,7 @@ public class Dot extends Enemy {
     super.move();
   }
   
-  public void action() { // This removes Dot by drawing over it and removing its Node, effectively causing it to be removed at next run of draw().
+  public void die() { // This removes Dot by drawing over it and removing its Node, effectively causing it to be removed at next run of draw().
     fill(color(240,230,140));
     stroke(color(240,230,140));
     rect(x * 50 + 19,y * 50 + 19,12,12);

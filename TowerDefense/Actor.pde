@@ -4,6 +4,4 @@ public abstract class Actor {
   public abstract void draw();
   
   public abstract void move();
-  
-  public abstract void action();
 }
