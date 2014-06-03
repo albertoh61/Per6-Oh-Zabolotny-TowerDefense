@@ -1,8 +1,8 @@
 public class Tower extends Actor {
-  int x,y;
-  int d,fr,r; //Damage, Fire Rate, Radius
+  int x, y;
+  int d, fr, r; //Damage, Fire Rate, Radius
 
-  public Tower(int x,int y,int d,int fr,int r) {
+  public Tower(int x, int y, int d, int fr, int r) {
     this.x = x;
     this.y = y;
     this.d = d;
@@ -10,29 +10,36 @@ public class Tower extends Actor {
     this.r = r;
   }
 
-  public void draw() {}
+  public void draw() {
+  }
 
-  public void move() {}
+  public void move() {
+  }
 
   public void shoot(Enemy e) {
     if (e != null)
       e.loseHealth(d);
   }  
-  
+
   public int getFr() {
-    return fr; 
+    return fr;
   }
-  
+
   public int getR() {
-    return r;  
+    return r;
   }
-  
+
   public int getX() {
     return x;
   }
-  
+
   public int getY() {
-    return y;  
+    return y;
   }
-  
+
+  public void setCoords(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
 }
+
