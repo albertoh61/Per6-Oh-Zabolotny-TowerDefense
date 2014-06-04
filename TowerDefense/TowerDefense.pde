@@ -4,6 +4,8 @@ Tower selected;
 int lives = 10;
 int money = 100;
 char k;
+int level = 1;
+int speed = 500;
 
 public void setup() { 
   size(1350, 800);
@@ -34,6 +36,7 @@ public void draw() {
         lives--;
       else
         money = money + eA.get(i).getMoney();
+      level ++;
       eA.remove(i);
     } else {
       eA.get(i).draw();
@@ -52,10 +55,22 @@ public void draw() {
   textSize(32);
   text("Lives: " + lives, 10, 32);
   text("Money: " + money, 10, 64);
+  text("Level: " + level, 10, 96);
+  text("Speed: " + speed / 100, 10, 128);
+  text("Inc" , 10, 160);
+  text("Dec" , 80, 160);
 
   // Timing delay
+  if(mouseX == 10 && mouseY == 160) {
+    speed = speed - 100; }
+  else if (mouseX == 80 && mouseY == 160) {
+    speed = speed + 100; }
+  
+  if(speed <= 100 || speed > 1000)
+    speed = 500;
+  
   try {
-    Thread.sleep(500);
+    Thread.sleep(speed);
   } 
   catch(InterruptedException ex) {
     Thread.currentThread().interrupt();
