@@ -3,6 +3,7 @@ MyLinkedList L;
 Tower selected;
 int lives = 10;
 int money = 100;
+char k;
 
 public void setup() { 
   size(1350, 800);
@@ -62,17 +63,13 @@ public void draw() {
 }
 
 public void mouseClicked() {
-  if (money >= 50) {
-    if (selected != null) {
-      selected.setCoords(mouseX / 50, mouseY / 50);
-      g.addTower(selected);
-      money = money - 50;
-    }
+  if (money >= 50 && k == 'p') {
+    g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 1, 2));
+    money = money - 50;
   }
 }
 
 public void keyPressed() {
-  if (key == 'p') 
-    selected = new Pew(mouseX / 50, mouseY / 50, 2, 1, 2);
+  k = key;
 }
 
