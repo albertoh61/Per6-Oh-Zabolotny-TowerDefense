@@ -9,6 +9,7 @@ int speed = 500;
 
 public void setup() { 
   size(1350, 800);
+  frameRate(60);
   //Creates grid of colors
   g = new Grid(1350, 800);
   //Creates path that correlates to LinkedList
@@ -59,9 +60,19 @@ public void draw() {
   text("Speed: " + speed / 100, 10, 128);
   text("Inc" , 10, 160);
   text("Dec" , 80, 160);
+  
+  /*
+  try {
+    Thread.sleep(speed);
+  } 
+  catch(InterruptedException ex) {
+    Thread.currentThread().interrupt();
+  }*/
+}
 
+public void mouseClicked() {
   // Timing delay
-  if(mouseX == 10 && mouseY == 160) {
+  if(mouseX > 10 && mouseX < 50 && mouseY > 140 && mouseX < 180) {
     speed = speed - 100; }
   else if (mouseX == 80 && mouseY == 160) {
     speed = speed + 100; }
@@ -69,17 +80,8 @@ public void draw() {
   if(speed <= 100 || speed > 1000)
     speed = 500;
   
-  try {
-    Thread.sleep(speed);
-  } 
-  catch(InterruptedException ex) {
-    Thread.currentThread().interrupt();
-  }
-}
-
-public void mouseClicked() {
   if (money >= 50 && k == 'p') {
-    g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 1, 2));
+    g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 1, 3));
     money = money - 50;
   }
 }

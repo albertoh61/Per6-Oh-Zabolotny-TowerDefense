@@ -3,12 +3,13 @@ public class Dot extends Enemy {
     super(root); 
     health = 5;
     money = 20;
+    speed = 2;
   }
 
   public void draw() {
     super.draw();
     fill(color(0, 0, 0));
-    rect(x * 50 + 20, y * 50 + 20, 10, 10);
+    rect(xpos + 20, ypos + 20, 10, 10);
   }
 
   public void move() {

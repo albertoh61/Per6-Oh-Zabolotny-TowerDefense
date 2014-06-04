@@ -1,6 +1,6 @@
 public class Tower extends Actor {
   int x, y;
-  int d, fr, r; //Damage, Fire Rate, Radius
+  int d, fr, r; // Damage, Fire Rate, Radius
 
   public Tower(int x, int y, int d, int fr, int r) {
     this.x = x;

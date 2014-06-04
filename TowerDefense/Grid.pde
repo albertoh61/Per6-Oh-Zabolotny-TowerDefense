@@ -48,7 +48,7 @@ public class Grid {
           }
         }
       }
-      if (d <= tA.get(i).getR())
+      if (d <= tA.get(i).getR() && frameCount % (60 / tA.get(i).getFr()) == 0)
         tA.get(i).shoot(target);
       target = null;
     }
