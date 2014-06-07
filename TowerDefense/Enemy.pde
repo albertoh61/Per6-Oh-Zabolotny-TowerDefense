@@ -70,5 +70,17 @@ public class Enemy extends Actor {
   public int getMoney() {
     return money;
   }
+  
+  public int getSpeed() {
+    return speed;  
+  }
+  
+  public int getXPos() {
+    return xpos;  
+  }
+  
+  public int getYPos() {
+    return ypos;  
+  }
 }
 
