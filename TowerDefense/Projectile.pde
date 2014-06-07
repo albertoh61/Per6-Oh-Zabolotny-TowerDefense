@@ -1,4 +1,4 @@
-public class Projectile extends Actor {
+/*public class Projectile extends Actor {
   Enemy target;
   int direction; // angle to target
   int d; // distance to target
@@ -14,7 +14,6 @@ public class Projectile extends Actor {
     while (pd != ed) {
       ed = Math.sqrt(Math.pow((expos + count) - x * 50,2) + Math.pow((eypos + count) - y * 50,2));
       pd = count
-    }
   }
   
   public draw() {
@@ -26,4 +25,4 @@ public class Projectile extends Actor {
     
   }
   
-}
+}*/

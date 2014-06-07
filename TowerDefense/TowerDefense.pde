@@ -54,12 +54,13 @@ public void draw() {
   // Displays how many lives you have remaining.
   fill(0, 0, 0);
   textSize(32);
-  text("Lives: " + lives, 10, 32);
-  text("Money: " + money, 10, 64);
-  text("Level: " + level, 10, 96);
-  text("Speed: " + speed / 100, 10, 128);
-  text("Inc" , 10, 160);
-  text("Dec" , 80, 160);
+  text("PLAY", 40, 32);
+  text("Lives: " + lives, 10, 64);
+  text("Money: " + money, 10, 96);
+  text("Level: " + level, 10, 128);
+  text("Speed: " + speed / 100, 10, 160);
+  text("Inc" , 10, 192);
+  text("Dec" , 80, 192);
   
   /*
   try {
