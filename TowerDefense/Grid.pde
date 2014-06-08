@@ -4,6 +4,7 @@ public class Grid {
   MyLinkedList path;
   ArrayList<Enemy> eA;
   ArrayList<Tower> tA;
+  ArrayList<Projectile> pA;
 
   public Grid(int x, int y) {
     gridc = new color[x / 50][y / 50];
@@ -16,6 +17,7 @@ public class Grid {
     path = new MyLinkedList();
     eA = new ArrayList<Enemy>();
     tA = new ArrayList<Tower>();
+    pA = new ArrayList<Projectile>();
   }
 
   public void setGrid() {
@@ -39,8 +41,8 @@ public class Grid {
     for (int i = 0; i < tA.size (); i++) {
       for (int j = 0; j < eA.size (); j++) {
         if (eA.get(j).getNode() != null) {
-          x = eA.get(j).getNode().getX() - tA.get(i).getX();
-          y = eA.get(j).getNode().getY() - tA.get(i).getY();
+          x = eA.get(j).getXPos() - (tA.get(i).getX() * 50 + 25);
+          y = eA.get(j).getYPos() - (tA.get(i).getY() * 50 + 25);
           temp = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)); // Distance from enemy to tower
           if (temp < d) {
             d = temp;
@@ -48,9 +50,13 @@ public class Grid {
           }
         }
       }
-      if (d <= tA.get(i).getR() && frameCount % (60 / tA.get(i).getFr()) == 0)
-        tA.get(i).shoot(target);
+      if (d <= tA.get(i).getR() * 50 && target != null) {
+        Projectile p = tA.get(i).shoot(target);
+        if (p != null)
+          pA.add(p);
+      }
       target = null;
+      d = Integer.MAX_VALUE;
     }
   }
 
@@ -72,6 +78,10 @@ public class Grid {
 
   public ArrayList<Tower> gettA() {
     return tA;
+  }
+  
+  public ArrayList<Projectile> getpA() {
+    return pA;
   }
 }
 

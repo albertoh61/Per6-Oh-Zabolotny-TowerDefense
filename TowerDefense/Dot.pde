@@ -4,6 +4,7 @@ public class Dot extends Enemy {
     health = 5;
     money = 20;
     speed = 2;
+    size = 5;
   }
 
   public void draw() {

@@ -1,6 +1,7 @@
 public class Tower extends Actor {
   int x, y;
   int d, fr, r; // Damage, Fire Rate, Radius
+  int count;
 
   public Tower(int x, int y, int d, int fr, int r) {
     this.x = x;
@@ -8,6 +9,7 @@ public class Tower extends Actor {
     this.d = d;
     this.fr = fr;
     this.r = r;
+    count = fr;
   }
 
   public void draw() {
@@ -16,9 +18,18 @@ public class Tower extends Actor {
   public void move() {
   }
 
-  public void shoot(Enemy e) {
-    if (e != null)
-      e.loseHealth(d);
+  public Projectile shoot(Enemy e) {
+    if (e != null) {
+      if (count == fr) { // Takes into account firerate of tower, shoots once every fr frames
+        Projectile p = new Projectile(e,x,y,5,d);
+        count = 0;
+        return p;
+      }
+      count++;
+    }
+    else
+      count = fr; // This ensures that the first shot is fired without delay
+    return null;
   }  
 
   public int getFr() {

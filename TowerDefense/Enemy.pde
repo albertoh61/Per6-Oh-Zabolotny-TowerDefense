@@ -1,6 +1,6 @@
 public class Enemy extends Actor {
-  int x, y, xpos, ypos, health, money, speed; // x and y are grid, xpos and ypos are pixel
-  Node<Actor> n;
+  int x, y, xpos, ypos, health, money, speed, size; // x and y are grid, xpos and ypos are pixel
+  Node<Actor> n; // Size enemy takes up as a measure of the center to the farthest outer point.
 
   public Enemy() {
     n = null;
@@ -81,6 +81,10 @@ public class Enemy extends Actor {
   
   public int getYPos() {
     return ypos;  
+  }
+  
+  public int getSize() {
+    return size;  
   }
 }
 
