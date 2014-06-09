@@ -6,6 +6,8 @@ int money = 100;
 char k;
 int level = 1;
 int speed = 500;
+PImage img;
+String name,cost,dps,radius;
 
 public void setup() { 
   size(1350, 800);
@@ -51,7 +53,7 @@ public void draw() {
     int x = tA.get(i).getX() * 50 + 25;
     int y = tA.get(i).getY() * 50 + 25;
     if (mouseX > x - 25 && mouseX < x + 25 &&
-        mouseY > y - 25 && mouseY < y + 25) {
+        mouseY > y - 25 && mouseY < y + 25) { // Creates radius circles around hovered towers
       stroke(0,0,0);
       strokeWeight(4);
       noFill();
@@ -71,8 +73,9 @@ public void draw() {
       pA.remove(i);
   }
 
-  // Creates radius circles around hovered towers
-
+  // Shows tower choices
+  img = loadImage("Tower.jpeg");
+  image(img,3,14 * 50 + 5);
 
   // Displays how many lives you have remaining.
   fill(0, 0, 0);
@@ -81,10 +84,28 @@ public void draw() {
   text("Lives: " + lives, 10, 64);
   text("Money: " + money, 10, 96);
   text("Level: " + level, 10, 128);
-  text("Speed: " + speed / 100, 10, 160);
-  text("Inc" , 10, 192);
-  text("Dec" , 80, 192);
-  
+  //text("Speed: " + speed / 100, 10, 160);
+  //text("Inc" , 10, 192);
+  //text("Dec" , 80, 192);
+  // Displays tower info
+  text("1",15,14 * 50 - 10);
+  text("Name: " + name,0,13 * 50 - 10);
+  text("Cost: " + cost,300,13 * 50 - 10);
+  text("DPS: " + dps,600,13 * 50 - 10);
+  text("Radius: " + radius,900,13 * 50 - 10);
+  if (mouseX > 0 && mouseX < 50 &&
+      mouseY > 14 * 50) {
+     name = "Pew";
+     cost = "$50";
+     dps = "2"; // Because 1 shot per 60 frames at 60 frames per second is 1 shot of 2 damage per second, or 2 damage per second
+     radius = "2"; // Tiles
+   } else {
+     name = "";
+     cost = "";
+     dps = "";
+     radius = "";
+   }
+      
   /*
   try {
     Thread.sleep(speed);
@@ -95,7 +116,7 @@ public void draw() {
 }
 
 public void mouseClicked() {
-  // Timing delay
+  /* Timing delay
   if(mouseX > 10 && mouseX < 50 && mouseY > 140 && mouseX < 180) {
     speed = speed - 100; }
   else if (mouseX == 80 && mouseY == 160) {
@@ -103,10 +124,23 @@ public void mouseClicked() {
   
   if(speed <= 100 || speed > 1000)
     speed = 500;
+  */
+  ArrayList<Tower> tA = g.gettA();
+
+  if (mouseX > 0 && mouseX < 50 &&
+      mouseY > 14 * 50) {
+    k = '1';
+  }  
   
-  if (money >= 50 && k == 'p') {
-    g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 60, 3));
-    money = money - 50;
+  if (money >= 50 && k == '1' && mouseY < 12 * 50) {
+    boolean occupied = false;
+    for (int i = 0;i < tA.size();i++) {
+      occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
+    }
+    if (!occupied) {
+      g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 60, 3));
+      money = money - 50;
+    }
   }
 }
 

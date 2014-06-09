@@ -9,10 +9,15 @@ public class Grid {
   public Grid(int x, int y) {
     gridc = new color[x / 50][y / 50];
     for (int i = 0; i < gridc.length; i++) {
-      for (int j = 0; j < gridc[0].length; j++) {
+      for (int j = 0; j < gridc[0].length - 4; j++) {
         gridc[i][j] = color(random(155) + 100, random(155) + 100, 0);
       }
     }
+    for (int i = 0; i < gridc.length; i++) {
+      for (int j = gridc[0].length - 4; j < gridc[0].length; j++) {        
+        gridc[i][j] = color(255, 255, 255);
+      }
+    }    
     grid = new Actor[x / 50][y / 50];
     path = new MyLinkedList();
     eA = new ArrayList<Enemy>();
@@ -24,7 +29,10 @@ public class Grid {
     for (int i = 0; i < gridc.length; i++) {
       for (int j = 0; j < gridc[0].length; j++) {
         fill(gridc[i][j]);
+        if (j >= gridc[0].length - 4)
+          stroke(255, 255, 255);
         rect(i * 50, j * 50, 50, 50);
+        stroke(0,0,0);
       }
     }
   }
