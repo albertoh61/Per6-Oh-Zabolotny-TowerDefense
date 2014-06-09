@@ -7,7 +7,7 @@ char k;
 int lev = 1;
 int speed = 500;
 int count; // Counts which enemy you are up to
-PImage img,img2;
+PImage img,img2,img3;
 String name,cost,dps,radius;
 Play p;
 int drawNum;
@@ -90,6 +90,8 @@ public void draw() {
     image(img,3,14 * 50 + 5);
     img2 = loadImage("rook.jpeg");
     image(img2,63,14 * 50 + 5);
+    img3 = loadImage("sniper.jpeg");
+    image(img3,123,14 * 50 + 5);
     
 
     // Displays how many lives you have remaining.
@@ -106,6 +108,7 @@ public void draw() {
     // Displays tower info
     text("1",15,14 * 50 - 10);
     text("2",80,14 * 50 - 10);
+    text("3",140,14 * 50 - 10);
     text("Name: " + name,0,13 * 50 - 10);
     text("Cost: " + cost,300,13 * 50 - 10);
     text("DPS: " + dps,600,13 * 50 - 10);
@@ -121,6 +124,11 @@ public void draw() {
       cost = "$60";
       dps = "4";
       radius = "1";
+    } else if (mouseX > 120 && mouseX < 170 && mouseY > 14 * 50) {
+      name = "Snipers";
+      cost = "$50";
+      dps = "2";
+      radius = "1";
     } else if (k == '1') {
       name = "Cannons";
       cost = "$50";
@@ -130,6 +138,11 @@ public void draw() {
       name = "Archers";
       cost = "$60";
       dps = "4";
+      radius = "1";
+    } else if (k == '3') {
+      name = "Snipers";
+      cost = "$50";
+      dps = "2";
       radius = "1";
     } else {
       name = "";
@@ -174,14 +187,25 @@ public void mouseClicked() {
     }
   }
   
-  if (money >= 50 && (mouseX > 260 || mouseY > 140) && mouseY < 12 * 50 && k == '2') {
+  if (money >= 60 && (mouseX > 260 || mouseY > 140) && mouseY < 12 * 50 && k == '2') {
     boolean occupied = false;
     for (int i = 0;i < tA.size();i++) {
       occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
     }
     if (!occupied) {
-      g.addTower(new Archer(mouseX / 50, mouseY / 50, 2, 10, 2));
-      money = money - 30;
+      g.addTower(new Archer(mouseX / 50, mouseY / 50, 2, 30, 2));
+      money = money - 60;
+    }
+  }
+  
+  if (money >= 50 && (mouseX > 260 || mouseY > 140) && mouseY < 12 * 50 && k == '3') {
+    boolean occupied = false;
+    for (int i = 0;i < tA.size();i++) {
+      occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
+    }
+    if (!occupied) {
+      g.addTower(new Sniper(mouseX / 50, mouseY / 50, 4, 120, 5));
+      money = money - 50;
     }
   }
   
