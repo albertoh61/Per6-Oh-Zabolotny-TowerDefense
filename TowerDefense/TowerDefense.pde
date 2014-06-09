@@ -114,17 +114,33 @@ public void draw() {
     text("Radius: " + radius,900,13 * 50 - 10);
     if (mouseX > 0 && mouseX < 50 &&
       mouseY > 14 * 50) {
-      name = "Pew";
+      name = "Cannons";
       cost = "$50";
       dps = "2"; // Because 1 shot per 60 frames at 60 frames per second is 1 shot of 2 damage per second, or 2 damage per second
       radius = "2"; // Tiles
+    } else if (mouseX > 60 && mouseX < 110 && mouseY > 14 * 50)  {
+      name = "Archers";
+      cost = "$60";
+      dps = "4";
+      radius = "1";
+    } else if (k == '1') {
+      name = "Cannons";
+      cost = "$50";
+      dps = "2"; 
+      radius = "2";
+    } else if (k == '2') {
+      name = "Archers";
+      cost = "$60";
+      dps = "4";
+      radius = "1";
     } else {
       name = "";
       cost = "";
       dps = "";
       radius = "";
-    }      
+    }
   }
+
   else {
       fill(0,0,0);
       textSize(32);
