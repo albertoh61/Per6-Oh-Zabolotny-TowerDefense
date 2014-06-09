@@ -6,9 +6,10 @@ int money = 100;
 char k;
 int lev = 1;
 int speed = 500;
-PImage img;
+PImage img,img2;
 String name,cost,dps,radius;
 Play p;
+int drawNum;
 
 public void setup() { 
   size(1350, 800);
@@ -56,7 +57,9 @@ public void draw() {
       int x = tA.get(i).getX() * 50 + 25;
       int y = tA.get(i).getY() * 50 + 25;
       if (mouseX > x - 25 && mouseX < x + 25 &&
-          mouseY > y - 25 && mouseY < y + 25) {// Creates radius circles around hovered towers
+          mouseY > y - 25 && mouseY < y + 25 && 
+          mouseX < 40 && mouseX > 80 &&
+          mouseY < 12 && mouseY > 52 ) {// Creates radius circles around hovered towers
         stroke(0,0,0);
         strokeWeight(4);
         noFill();
@@ -79,6 +82,9 @@ public void draw() {
     // Shows tower choices
     img = loadImage("Tower.jpeg");
     image(img,3,14 * 50 + 5);
+    img2 = loadImage("rook.jpeg");
+    image(img2,63,14 * 50 + 5);
+    
 
     // Displays how many lives you have remaining.
     fill(0, 0, 0);
@@ -93,6 +99,7 @@ public void draw() {
     //text("Dec" , 80, 192);
     // Displays tower info
     text("1",15,14 * 50 - 10);
+    text("2",80,14 * 50 - 10);
     text("Name: " + name,0,13 * 50 - 10);
     text("Cost: " + cost,300,13 * 50 - 10);
     text("DPS: " + dps,600,13 * 50 - 10);
@@ -134,7 +141,7 @@ public void mouseClicked() {
     k = '1';
   }  
   
-  if (money >= 50 && k == '1' && mouseY < 12 * 50) {
+  if (money >= 50 && mouseY < 12 * 50 && k == '1') {
     boolean occupied = false;
     for (int i = 0;i < tA.size();i++) {
       occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
@@ -142,6 +149,17 @@ public void mouseClicked() {
     if (!occupied) {
       g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 60, 3));
       money = money - 50;
+    }
+  }
+  
+  if (money >= 50 && mouseY < 12 * 50 && k == '2') {
+    boolean occupied = false;
+    for (int i = 0;i < tA.size();i++) {
+      occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
+    }
+    if (!occupied) {
+      g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 10, 2));
+      money = money - 30;
     }
   }
   
