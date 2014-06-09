@@ -87,9 +87,9 @@ public void draw() {
 
     // Shows tower choices
     img = loadImage("Tower.jpeg");
-    image(img,3,14 * 50 + 5);
+    image(img,63,14 * 50 + 5);
     img2 = loadImage("rook.jpeg");
-    image(img2,63,14 * 50 + 5);
+    image(img2,3,14 * 50 + 5);
     img3 = loadImage("sniper.jpeg");
     image(img3,123,14 * 50 + 5);
     
@@ -209,7 +209,7 @@ public void mouseClicked() {
     }
   }
   
-  if(mouseX > 40 && mouseX < 90 && mouseY > 12 && mouseY < 52 && g.geteA().size() == 0) {
+  if(mouseX > 40 && mouseX < 120 && mouseY > 12 && mouseY < 52 && g.geteA().size() == 0) {
       lev ++;
       count = 0;
       if (lev < 7) {
