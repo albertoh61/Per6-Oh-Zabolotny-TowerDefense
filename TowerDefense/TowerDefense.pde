@@ -180,7 +180,7 @@ public void mouseClicked() {
       occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
     }
     if (!occupied) {
-      g.addTower(new Pew(mouseX / 50, mouseY / 50, 2, 10, 2));
+      g.addTower(new Archer(mouseX / 50, mouseY / 50, 2, 10, 2));
       money = money - 30;
     }
   }
