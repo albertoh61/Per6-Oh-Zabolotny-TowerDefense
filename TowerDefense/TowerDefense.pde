@@ -98,7 +98,7 @@ public void draw() {
      name = "Pew";
      cost = "$50";
      dps = "2"; // Because 1 shot per 60 frames at 60 frames per second is 1 shot of 2 damage per second, or 2 damage per second
-     radius = "2"; // Tiles
+     radius = "2 tiles";
    } else {
      name = "";
      cost = "";
