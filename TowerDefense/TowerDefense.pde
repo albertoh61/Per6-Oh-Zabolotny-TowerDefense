@@ -6,6 +6,7 @@ int money = 100;
 char k;
 int lev = 1;
 int speed = 500;
+int count; // Counts which enemy you are up to
 PImage img;
 String name,cost,dps,radius;
 Play p;
@@ -37,14 +38,21 @@ public void draw() {
     ArrayList<Tower> tA = g.gettA();
     ArrayList<Projectile> pA = g.getpA();
     // Deals with drawing each enemy
+    if (L.getNode(0).getData() == null) {
+      if (count < eA.size()) {
+        eA.get(count).setNode(L.getNode(0));
+        count++;
+      }
+    }
     for (int i = 0; i < eA.size (); i++) {
-      if (eA.get(i).getNode() == null) {// This removes "dead" enemies, or enemies without a node
+      if (eA.get(i).getNode() == null && eA.get(i).getNodeSet()) {// This removes "dead" enemies, or enemies without a node
         if (eA.get(i).alive())
           lives--;
         else
           money = money + eA.get(i).getMoney();
         eA.remove(i);
-      } else {
+        count--;
+      } else if (eA.get(i).getNodeSet()) {
         eA.get(i).draw();
         eA.get(i).move();
       }
@@ -147,10 +155,12 @@ public void mouseClicked() {
   
   if(mouseX > 40 && mouseX < 90 && mouseY > 12 && mouseY < 52 && g.geteA().size() == 0) {
       lev ++;
-      for(int i = 0;i < lev;i ++){
-        g.addEnemy(p.getEnemies().get(lev).get(i)); 
+      count = 0;
+      if (lev < 7) {
+        for(int i = 0;i < lev;i ++){
+          g.addEnemy(p.getEnemies().get(lev).get(i)); 
+        }
       }
-      draw(); 
   }
 }
 

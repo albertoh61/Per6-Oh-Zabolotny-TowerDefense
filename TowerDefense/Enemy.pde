@@ -1,17 +1,24 @@
 public class Enemy extends Actor {
   int x, y, xpos, ypos, health, money, speed, size; // x and y are grid, xpos and ypos are pixel
   Node<Actor> n; // Size enemy takes up as a measure of the center to the farthest outer point.
+  boolean nodeSet; // True if this has been given a Node, false otherwise.
 
   public Enemy() {
     n = null;
   }
 
   public Enemy(Node<Actor> root) {
-    x = root.getX();
-    y = root.getY();
+    nodeSet = false;
+    if (n != null) {
+      n.setData(this);
+      x = root.getX();
+      y = root.getY();
+      nodeSet = true;
+    }
     xpos = x * 50;
     ypos = y * 50;
     n = root;
+
     speed = 1;
   }
 
@@ -37,8 +44,10 @@ public class Enemy extends Actor {
       if (ny < ypos)
         ypos = ypos - speed;
       
-      if (nx == xpos && ny == ypos)
+      if (nx == xpos && ny == ypos) {
+        n.setData(null);
         n = n.getNext();
+      }
     }
     /*
     if (n.getNext() == null || health <= 0)
@@ -57,6 +66,16 @@ public class Enemy extends Actor {
   }
 
   public void die() { // For enemies, die kills them and will, in the future, cause you to lose a life
+  }
+
+  public void setNode(Node n) {
+    this.n = n;
+    nodeSet = true;
+    x = n.getX();
+    y = n.getY();
+    xpos = x * 50;
+    ypos = y * 50;
+    n.setData(this);
   }
 
   public Node<Actor> getNode() {
@@ -85,6 +104,10 @@ public class Enemy extends Actor {
   
   public int getSize() {
     return size;  
+  }
+  
+  public boolean getNodeSet() {
+    return nodeSet;
   }
 }
 
