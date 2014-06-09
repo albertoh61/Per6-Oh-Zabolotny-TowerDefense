@@ -163,7 +163,7 @@ public void mouseClicked() {
     k = '1';
   }  
   
-  if (money >= 50 && mouseY < 12 * 50 && k == '1') {
+  if (money >= 50 && (mouseX > 260 || mouseY > 140) && mouseY < 12 * 50 && k == '1') {
     boolean occupied = false;
     for (int i = 0;i < tA.size();i++) {
       occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
@@ -174,7 +174,7 @@ public void mouseClicked() {
     }
   }
   
-  if (money >= 50 && mouseY < 12 * 50 && k == '2') {
+  if (money >= 50 && (mouseX > 260 || mouseY > 140) && mouseY < 12 * 50 && k == '2') {
     boolean occupied = false;
     for (int i = 0;i < tA.size();i++) {
       occupied = tA.get(i).getX() == mouseX / 50 && tA.get(i).getY() == mouseY / 50;  
