@@ -65,9 +65,7 @@ public void draw() {
       int x = tA.get(i).getX() * 50 + 25;
       int y = tA.get(i).getY() * 50 + 25;
       if (mouseX > x - 25 && mouseX < x + 25 &&
-          mouseY > y - 25 && mouseY < y + 25 && 
-          mouseX < 40 && mouseX > 80 &&
-          mouseY < 12 && mouseY > 52 ) {// Creates radius circles around hovered towers
+          mouseY > y - 25 && mouseY < y + 25  ) {// Creates radius circles around hovered towers
         stroke(0,0,0);
         strokeWeight(4);
         noFill();
