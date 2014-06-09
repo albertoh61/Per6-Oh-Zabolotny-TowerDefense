@@ -1,17 +1,17 @@
-public class Dot extends Enemy {
+public class Knight extends Enemy {
   PImage img;
   
-  public Dot(Node<Actor> root) {
+  public Knight(Node<Actor> root) {
     super(root); 
-    health = 5;
-    money = 20;
-    speed = 2;
+    health = 10;
+    money = 70;
+    speed = 4;
     size = 5;
   }
 
   public void draw() {
     super.draw();
-    img = loadImage("dot.png");
+    img = loadImage("knight.png");
     image(img, xpos, ypos);
     //fill(color(0, 0, 0));
     //rect(xpos + 20, ypos + 20, 10, 10);

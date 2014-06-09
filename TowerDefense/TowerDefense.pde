@@ -28,7 +28,7 @@ public void setup() {
     n = n.getNext();
   }
   g.setGrid();
-  g.addEnemy(new Dot(L.getNode(0)));
+  //g.addEnemy(new Knight(L.getNode(0)));
   p = new Play(L.getNode(0));
 }
 
@@ -189,7 +189,7 @@ public void mouseClicked() {
       lev ++;
       count = 0;
       if (lev < 7) {
-        for(int i = 0;i < lev;i ++){
+        for(int i = 0;i < p.getEnemies().get(lev).size();i ++){
           g.addEnemy(p.getEnemies().get(lev).get(i)); 
         }
       }

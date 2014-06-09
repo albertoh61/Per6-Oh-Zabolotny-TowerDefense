@@ -44,7 +44,7 @@ public class Enemy extends Actor {
       if (ny < ypos)
         ypos = ypos - speed;
       
-      if (nx == xpos && ny == ypos) {
+      if (nx > xpos - size && nx < xpos + size && ny > ypos - size && ny < ypos + size) {
         n.setData(null);
         n = n.getNext();
       }
