@@ -65,7 +65,7 @@ public class Enemy extends Actor {
     health = health - x;
   }
 
-  public void die() { // For enemies, die kills them and will, in the future, cause you to lose a life
+  public void die() { // For enemies, die kills them or will cause you to lose a life
   }
 
   public void setNode(Node n) {
@@ -83,7 +83,7 @@ public class Enemy extends Actor {
   }
 
   public boolean alive() {
-    return health >= 0;
+    return health > 0;
   }
 
   public int getMoney() {
